@@ -36,10 +36,12 @@ class Post {
       ";
     }
 
-    $stmt = $this->db->prepare($query);
+
     if($this->get_id != ""){
       $stmt = $this->db->prepare($get_id_query);
       $stmt->bindParam(1, $this->get_id);
+    }else{
+      $stmt = $this->db->prepare($query);
     }
     $stmt->execute();
 
